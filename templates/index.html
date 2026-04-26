@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flight Price Prediction</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            text-align: center;
+            padding: 50px;
+        }
+
+        h2 {
+            color: white;
+        }
+
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        input {
+            padding: 10px;
+            margin: 10px;
+            width: 200px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background: #4facfe;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        h3 {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<h2>✈️ Flight Price Prediction</h2>
+
+<form action="/predict" method="post">
+
+    <select name="airline">
+        <option value="0">Indigo</option>
+        <option value="1">Air India</option>
+        <option value="2">SpiceJet</option>
+    </select><br>
+
+    <select name="source">
+        <option value="0">Chennai</option>
+        <option value="1">Delhi</option>
+        <option value="2">Mumbai</option>
+    </select><br>
+
+    <select name="destination">
+        <option value="0">Bangalore</option>
+        <option value="1">Kolkata</option>
+        <option value="2">Hyderabad</option>
+    </select><br>
+    
+    <input type="number" name="stops" placeholder="Stops" required><br>
+    <input type="number" name="duration" placeholder="Duration" required><br>
+
+   
+
+    <button type="submit">Predict Price</button>
+</form>
+
+<h3>{{ prediction_text }}</h3>
+
+</body>
+</html>
