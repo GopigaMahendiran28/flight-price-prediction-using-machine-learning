@@ -1,18 +1,19 @@
 from flask import Flask, request, render_template
 import joblib
 import numpy as np
-import requests
+import os
+import gdown
 
 app = Flask(__name__)
 
-# 🔥 Download model from Google Drive
+# download model from drive
 url = "https://drive.google.com/uc?id=1gU1F_0HhQmk-zBhzoNqKbKvYuqM4_9NT"
+output = "model.pkl"
 
-response = requests.get(url)
-open("model.pkl", "wb").write(response.content)
+if not os.path.exists(output):
+    gdown.download(url, output, quiet=False)
 
-# Load model
-model = joblib.load("model.pkl")
+model = joblib.load(output)
 
 @app.route('/')
 def home():
